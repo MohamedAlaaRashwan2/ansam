@@ -1,0 +1,94 @@
+.contactSection {
+  background-color: #fff;
+  padding: 80px 20px;
+  direction: rtl;
+  font-family: "Cairo", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 50px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.infoBox h3,
+.formBox h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.infoBox p {
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.formBox form {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  color: #777;
+}
+
+.formBox input,
+.formBox textarea {
+  padding: 12px 15px;
+  border: 1px solid #777;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.formBox input:focus,
+.formBox textarea:focus {
+  border-color: #0070f3;
+}
+
+.formBox button {
+  padding: 14px;
+  background-color: #0070f3;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.formBox button:hover {
+  background-color: #0059c1;
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .mapContainer {
+    height: 200px;
+  }
+}

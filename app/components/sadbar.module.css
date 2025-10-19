@@ -1,0 +1,34 @@
+
+
+@media (max-width: 768px) {
+    p.text {
+        margin-top: 50px;
+        
+    }
+    h1.h1text {
+        font-size: 40px;
+        line-height: 1.6; 
+    }
+    
+}  
+
+
+
+
+.bookingButton {
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--main-transition);
+    border: 1px solid var(--ditele);
+}
+
+.bookingButton button {
+    cursor: pointer;
+}
+
+.bookingButton:hover {
+    background-color: var(--ditele);
+}

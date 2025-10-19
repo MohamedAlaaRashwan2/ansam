@@ -1,0 +1,281 @@
+.navbar {
+    background-color: var(--foreground);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 0 10px #6161619e;
+    transition: var(--main-transition);
+      background-color: #faf9f7;
+
+}
+
+div.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.logoContainer {
+    display: flex;
+    align-items: center;
+    width: 70px;
+}
+
+.navLinks {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+    color: var(--text);
+}
+
+.navLinks li a {
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    padding-right: 20px;
+    transition: var(--main-transition);
+    cursor: pointer;
+}
+
+
+.navLinks li a:hover {
+    color: var(--ditele);
+}
+
+.bookingButton {
+    background-color: var(--ditele);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--main-transition);
+}
+
+.bookingButton button {
+    cursor: pointer;
+}
+
+.bookingButton:hover {
+    background-color: #a8881f;
+}
+
+
+
+@media (max-width: 991px) {
+    .navLinks li a  {
+        padding-right: 0;
+    }
+}
+/* start navbar mobile */
+
+.navLinksMobile ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: start;
+}
+
+
+
+.navLinksMobile li  {
+    width: 100%;
+
+}
+.navLinksMobile li a {
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    transition: var(--main-transition);
+    background-color: #dddddd;
+    width: 100%;
+    display: flex;
+    padding: 20px 20px;
+}
+
+.navLinksMobile li a:hover {
+    background-color: #D4AF37;
+    padding-right: 35px;
+}
+.bookingButtonMobile {
+    width: fit-content;
+    background-color: #D4AF37;
+    color: white;
+    padding: 10px 30px;
+    margin-right: 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--main-transition);
+    margin-top: 30px;
+}
+
+.bookingButtonMobile button {
+    cursor: pointer;
+    font-size: 18px;
+
+}
+.bookingButtonMobile:hover {
+    background-color: #a8881f;
+}
+.burgerCheckbox {
+  display: none;
+}
+
+.navLinksMobile {
+  display: flex;
+  flex-direction: column;
+  background: var(--foreground);
+  position: fixed;
+  top: 0;
+  right: -340px;
+  width: 320px;
+  height: 100vh;
+  border-top: 1px solid #eee;
+  text-align: center;
+  z-index: 9999;
+  color: var(--text);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+
+}
+.burgerCheckbox:checked ~ .navLinksMobile {
+    right: 0;
+    
+}
+
+.logoMobile {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin: 14px 14px;
+}
+
+
+/* end navbar mobile */
+
+
+/* ==================== */
+
+.burger {
+  position: relative;
+  width: 40px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+}
+
+@media (min-width: 769px) {
+    .burger {
+        display: none;
+    }
+    .navLinksMobile {
+        display: none;
+    }
+}
+
+.burger input {
+  display: none;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: black;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+  top: 0px;
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+  top: 100%;
+  transform-origin: left center;
+  transform: translateY(-100%);
+}
+
+.burgerCheckbox:checked + .burger span:nth-of-type(1) {
+  transform: rotate(45deg);
+  top: 0px;
+  left: 5px;
+}
+
+.burgerCheckbox:checked + .burger span:nth-of-type(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.burgerCheckbox:checked + .burger span:nth-of-type(3) {
+  transform: rotate(-45deg);
+  top: 28px;
+  left: 5px;
+}
+
+
+
+
+/* media queries */
+
+@media (max-width: 768px) {
+    .navLinks,.bookingButton {
+        display: none;
+    }
+    div.container {
+    padding: 0 15px;
+    }
+    .navbar {
+        border-radius: 0;
+    }
+    .logo {
+        width: 70px;
+    }
+    .navLinks li a {
+        font-weight: 600;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 16px;
+        letter-spacing: 0.01em;
+        padding-right: 20px;
+        transition: var(--main-transition);
+    }
+    .logoMobile {
+        width: 40px;
+        height: 40px;
+        transform: scale(1.5);
+        position: relative;
+        right: 13px;
+
+    }
+
+
+}
