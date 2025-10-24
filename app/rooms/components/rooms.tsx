@@ -12,7 +12,7 @@ interface Room {
   price: number;
   rating?: number;
   description: string;
-  image?: string;
+  images?: string[];
   services?: string[];
   size?: number;
   bad?: string;
@@ -139,7 +139,17 @@ export default function RoomsSection() {
                 viewport={{ once: true }}
               >
                 <div className={styles.imageWrapper}>
-                 <Link href={`/rooms/${room.id}`}> <img src={room.image || "/about1.jpg"} alt={room.name} className={styles.image} /></Link>
+                  <Link href={`/rooms/${room.id}`}>
+                    <img 
+                      src={room.images?.[0] || "/about1.jpg"} 
+                      alt={room.name} 
+                      className={styles.image} 
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "/about1.jpg";
+                      }}
+                    />
+                  </Link>
                   <div className={styles.price}>{room.price} ريال / الليلة</div>
                 </div>
 

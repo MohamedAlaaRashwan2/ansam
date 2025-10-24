@@ -64,7 +64,7 @@ export default async function RoomPage(props: {
       {/* ✅ باقي الصور */}
       {room.images && room.images.length > 1 && (
         <div className={styles.images}>
-          {room.images.slice(1).map((image, index) => (
+          {room.images.slice().map((image, index) => (
             <img
               key={index}
               src={image}
