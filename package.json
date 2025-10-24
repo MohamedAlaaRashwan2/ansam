@@ -5,7 +5,8 @@
   "scripts": {
   "dev": "next dev",
   "build": "next build --no-lint",
-  "start": "next start"
+  "start": "next start",
+  "postinstall": "npx --yes lightningcss-cli --version || true"
 },
 
   "dependencies": {
