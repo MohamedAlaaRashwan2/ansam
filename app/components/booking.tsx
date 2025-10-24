@@ -6,6 +6,10 @@ export default function BookingForm() {
   const [showGuestBox, setShowGuestBox] = useState(false);
   const [guests, setGuests] = useState(0);
   const [rooms, setRooms] = useState(0);
+  const today = new Date().toISOString().split("T")[0];
+  const tomorrow = new Date(new Date().setDate(new Date().getDate() + 15)).toISOString().split("T")[0];
+  const [checkInDate, setCheckInDate] = useState(today);
+  const [checkOutDate, setCheckOutDate] = useState(tomorrow);
   const popupRef = useRef<HTMLDivElement>(null);
   const checkIn = useRef<HTMLInputElement>(null);
   const checkOut = useRef<HTMLInputElement>(null);
@@ -23,26 +27,30 @@ export default function BookingForm() {
   return (
     <div className={styles.bookingWrapper}>
       <form className={styles.bookingForm}>
-        <div className={styles.formItem} onClick={() => checkIn.current?.showPicker()}>
-          <label htmlFor="checkIn">Check In</label>
+        <div className={styles.formItem}>
+          <label htmlFor="checkIn">تاريخ الوصول</label>
           <input
             type="date"
             id="checkIn"
+            value={checkInDate}
+            onChange={(e) => setCheckInDate(e.target.value)}
+            onClick={() => checkIn.current?.showPicker()}
             className={styles.input}
-            defaultValue="2024-01-30"
             ref={checkIn}
           />
         </div>
 
         <span className={styles.divider}></span>
 
-        <div className={styles.formItem} onClick={() => checkOut.current?.showPicker()}>
-          <label htmlFor="checkOut">Check Out</label>
+        <div className={styles.formItem}>
+          <label htmlFor="checkOut">تاريخ المغادرة</label>
           <input
             type="date"
             id="checkOut"
+            value={checkOutDate}
+            onChange={(e) => setCheckOutDate(e.target.value)}
+            onClick={() => checkOut.current?.showPicker()}
             className={styles.input}
-            defaultValue="2024-01-30"
             ref={checkOut}
           />
         </div>
@@ -53,7 +61,7 @@ export default function BookingForm() {
           className={styles.formItem}
           onClick={() => setShowGuestBox(!showGuestBox)}
         >
-          <label>Guests and Rooms</label>
+          <label>عدد الضيوف والغرف</label>
           <div className={styles.guestsDisplay}>
             {guests} Guest / {rooms} Room
           </div>

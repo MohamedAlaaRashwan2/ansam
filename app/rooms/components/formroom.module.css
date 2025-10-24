@@ -1,0 +1,102 @@
+.reservationArea {
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 80px;
+  height: fit-content;
+}
+
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.input,
+.select {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+  color: #777;
+}
+
+.formGroup input:focus{
+outline: none;
+}
+
+.sliderValues {
+height: 5px;
+border-radius: 5px;
+background-color: #ddd;
+position: relative;
+}
+
+.rangeContainer {
+  height: 5px;
+  border-radius: 5px;
+  background-color: #0070f3;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.inputRange {
+position: relative;
+}
+
+.inputRange input {
+  position: absolute;
+  top: -5px;
+  height: 5px;
+  width: 100%;
+  -webkit-appearance: none;
+  background: none;
+  pointer-events: none;
+}
+
+.inputRange input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  background-color: #f0b100;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+
+
+.submitBtn {
+  width: 100%;
+  padding: 12px;
+  background-color: #f0b100;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background 0.3s;
+  transition: 0.3s;
+}
+
+.submitBtn:hover {
+  background-color: var(--main-color);
+  cursor: pointer;
+}

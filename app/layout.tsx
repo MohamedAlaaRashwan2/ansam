@@ -30,13 +30,6 @@ const cairo = Cairo({
   variable: "--font-cairo",
 });
 
-
-
-import { Html, Head, Main, NextScript } from "next/document";
-
-
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
