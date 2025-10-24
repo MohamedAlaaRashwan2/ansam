@@ -1,14 +1,16 @@
 import type { NextConfig } from "next";
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // output: 'export',
+const nextConfig: NextConfig = {
+
   images: {
-    unoptimized: true, 
-        domains: [
-      "paleturquoise-beaver-156875.hostingersite.com", // اسم الدومين اللي فيه الصور
+    unoptimized: true,
+    domains: [
+      "paleturquoise-beaver-156875.hostingersite.com",
     ],
   },
-  trailingSlash: true, 
+  trailingSlash: true,
+  experimental: {
+    optimizeCss: false, 
+  },
 };
 
 export default nextConfig;

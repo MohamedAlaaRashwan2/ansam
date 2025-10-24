@@ -13,14 +13,9 @@ interface Room {
   bad?: string;
   capacity?: number;
 }
+export default async function RoomPage({ params }: { params: { roomid: string } }) {
 
-type RoomPageProps = {
-  params: {
-    roomid: string;
-  };
-};
-export default async function RoomPage({ params }: RoomPageProps) {
-    const  roomid  = params.roomid;
+  const  roomid  = params.roomid;
 
     const res = await fetch(`https://paleturquoise-beaver-156875.hostingersite.com/api_php/room.php/${roomid}`, {
       next: {
