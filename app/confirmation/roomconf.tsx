@@ -17,7 +17,7 @@ interface Room {
 }
 
 export default function RoomsSection() {
-  const [rooms, setRooms] = useState<Room | null>(null);
+  const [rooms, setRooms] = useState<Room[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -75,48 +75,48 @@ export default function RoomsSection() {
       <div className={styles.container}>
 
         <div className={styles.cards}>
-          {rooms && (
+          {rooms.map((room) => (
             <a
-              href={`/rooms/${rooms.id}`}
-              key={rooms.id}
+              href={`/rooms/${room.id}`}
+              key={room.id}
               className={styles.card}
             >
               <div className={styles.imageWrapper}>
                 <img
-                  src={rooms.images?.[0] || "/about1.jpg"}
-                  alt={rooms.name}
+                  src={room.images?.[0] || "/about1.jpg"}
+                  alt={room.name}
                   className={styles.image}
                 />
-      <div className={styles.price}>{rooms.price} ريال / الليلة</div>
+               <div className={styles.price}>{room.price} ريال / الليلة</div>
               </div>
 
               <div className={styles.content}>
                 <div className={styles.headerRow}>
-                  <h4 className={styles.roomName}>{rooms.name}</h4>
+                  <h4 className={styles.roomName}>{room.name}</h4>
                   <p className={styles.rating}>
                     <FaStar className={styles.star} />{" "}
-                    {rooms.rating ?? "4.8"}
+                    {room.rating ?? "4.8"}
                   </p>
                 </div>
-                <p className={styles.description}>{rooms.description}</p>
+                <p className={styles.description}>{room.description}</p>
 
                 <ul className={styles.services}>
-                  {rooms.services?.includes("wifi") && (
+                  {room.services?.includes("wifi") && (
                     <li>
             <FaWifi /> <span>إنترنت مجاني</span>
                     </li>
                   )}
-                  {rooms.services?.includes("ac") && (
+                  {room.services?.includes("ac") && (
                     <li>
             <FaSnowflake /> <span>مكيف هواء</span>
                     </li>
                   )}
-                  {rooms.services?.includes("food") && (
+                  {room.services?.includes("food") && (
                     <li>
             <FaUtensils /> <span>وجبات</span>
                     </li>
                   )}
-                  {rooms.services?.includes("mosque") && (
+                  {room.services?.includes("mosque") && (
                     <li>
             <FaMosque /> <span>قريب من الحرم</span>
                     </li>
@@ -124,7 +124,7 @@ export default function RoomsSection() {
                 </ul>
               </div>
             </a>
-          )}
+          ))}
         </div>
       </div>
     </section>
