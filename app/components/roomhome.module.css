@@ -26,6 +26,13 @@
   color: #222;
 }
 
+.titleroomid {
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+  text-align: justify;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -100,6 +107,8 @@
   margin: 12px 0 20px;
   font-size: 15px;
   line-height: 1.6;
+  height: 23px;
+  overflow: hidden;  
 }
 
 .services {

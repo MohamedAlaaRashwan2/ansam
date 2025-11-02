@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import styles from "./roomhome.module.css";
+import styles from "../../components/roomhome.module.css";
 import { FaWifi, FaUtensils, FaMosque, FaSnowflake, FaStar } from "react-icons/fa";
 
 // ✅ تعريف نوع بيانات الغرفة
@@ -63,20 +63,29 @@ export default function RoomsSection() {
   }
 
   return (
-    <section className={styles.rooms}>
-      <div className={styles.container}>
+    <section className={styles.rooms}
+    style={{
+      padding: "0"
+    }}>
+      <div className={styles.container} style={{
+                margin: '0 0 20px 0', width: '100%'
+              }}>
         <motion.div
           className={styles.header}
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          style={{
+            marginBottom: "20px"
+          }}
         >
-          <h2 className={styles.title}>غرفنا الفندقية</h2>
-          <p className={styles.subtitle}>تجربة راقية</p>
+          <h2 className={styles.title + " " + styles.titleroomid}  >غرف مشابهة</h2>
         </motion.div>
 
-        <div className={styles.cards}>
+        <div className={styles.cards} style={{
+                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))'
+              }}>
           {shuffledRooms.map((room, index) => (
             <motion.a
               href={`/rooms/${room.id}`}
@@ -131,18 +140,6 @@ export default function RoomsSection() {
             </motion.a>
           ))}
         </div>
-
-        <motion.div
-          className={styles.moreBtn}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <a href="/rooms" className={styles.btn}>
-            عرض جميع الغرف
-          </a>
-        </motion.div>
       </div>
     </section>
   );

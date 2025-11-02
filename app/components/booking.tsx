@@ -4,7 +4,7 @@ import styles from "./booking.module.css";
 
 export default function BookingForm() {
   const [showGuestBox, setShowGuestBox] = useState(false);
-  const [guests, setGuests] = useState(0);
+  const [guests, setGuests] = useState(1);
   const [rooms, setRooms] = useState(0);
   const today = new Date().toISOString().split("T")[0];
   const tomorrow = new Date(new Date().setDate(new Date().getDate() + 15)).toISOString().split("T")[0];
@@ -13,6 +13,15 @@ export default function BookingForm() {
   const popupRef = useRef<HTMLDivElement>(null);
   const checkIn = useRef<HTMLInputElement>(null);
   const checkOut = useRef<HTMLInputElement>(null);
+  const [form, setForm] = useState({
+    check_in: checkInDate,
+    check_out: checkOutDate,
+    adults: guests,
+    children: rooms,
+    min_price: 0,
+    max_price: 3000,
+
+  });
   
   useEffect(() => {
     const handleClickOutside = (e: any) => {
@@ -24,9 +33,32 @@ export default function BookingForm() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+    useEffect(() => {
+    const form = localStorage.getItem("form");
+    if (form) {
+      setForm(JSON.parse(form));
+      setCheckInDate(JSON.parse(form).check_in);
+      setCheckOutDate(JSON.parse(form).check_out);
+      setGuests(JSON.parse(form).adults);
+      setRooms(JSON.parse(form).children);
+    }
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if(new Date(checkInDate) > new Date(checkOutDate)) {
+      alert("تاريخ الوصول يجب أن يكون قبل تاريخ المغادرة");
+      return;
+    }
+    const newForm = {...form, check_in: checkInDate, check_out: checkOutDate, adults: guests, children: rooms};
+    setForm(newForm);
+    localStorage.setItem("form", JSON.stringify(newForm));
+    window.location.href = "/rooms";
+  };
+
   return (
     <div className={styles.bookingWrapper}>
-      <form className={styles.bookingForm}>
+      <form className={styles.bookingForm} onSubmit={handleSubmit}>
         <div className={styles.formItem}>
           <label htmlFor="checkIn">تاريخ الوصول</label>
           <input
@@ -81,7 +113,7 @@ export default function BookingForm() {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setGuests(Math.max(0, guests - 1));
+                      setGuests(Math.max(1, guests - 1));
                     }}
                   >
                     -

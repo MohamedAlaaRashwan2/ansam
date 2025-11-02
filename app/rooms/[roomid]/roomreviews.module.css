@@ -1,0 +1,261 @@
+.reviewsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #222;
+    flex: 0 0 30%;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #222;
+    /* flex: 0 0 67%; */
+}
+
+.reviewItem,.reviewModal {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    position: relative;
+}
+
+ .reviewHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+}
+.reviewItem .reviewHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    position: absolute;
+    top: 0px;
+    background-color: var(--main-background);
+    width: fit-content;
+    border-radius: 0 15px;
+    padding: 10px;
+    right: 0;
+}
+
+.reviewHeader strong {
+    font-size: 20px;
+}
+
+.star {
+    color: #f1c40f;
+}
+
+.ratingg {
+    color: #f39c12;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.date {
+    color: #666;
+    font-size: 14px;
+}
+
+.button {
+    background-color: var(--ditele);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--main-color);
+}
+.reviewModal .date {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.reviewItem p,.reviewModal p {
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: normal;
+    color: #666;
+    margin-top: 15px;
+}
+
+.reviewItem p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-top: 40px;
+}
+
+.readMore {
+    color: #f1c40f;
+    cursor: pointer;
+    width: fit-content;
+    margin-bottom: 15px;
+}
+
+.readMore:hover {
+    color: #967907;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalItem {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.reviewModal {
+width: 50%;
+}
+
+.closeButton {
+    background-color: #fff;
+    color: #222;
+    border: none;
+    cursor: pointer;
+    padding-block: 10px;
+    padding-inline: 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background-color: #f1c40f;
+}
+
+.closeButton:hover {
+    background-color: #d4ad11;
+}
+
+
+
+.form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.nameEmail input,.form textarea{
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 20px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+.form textarea{
+    margin: 0;
+    resize: none;
+}
+.nameEmail input:focus,.form textarea:focus{
+    border-color: #f1c40f;
+    background-color: var(--main-background) ;  
+}
+
+
+
+.addReview h3{
+    margin-top: 20px;
+}
+
+
+.addReview p {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.rating:not(:checked) > input {
+  position: absolute;
+  appearance: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 30px;
+  color: #666;
+}
+
+.rating:not(:checked) > label:before {
+  content: '★';
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+  color: #ffa723;
+}
+
+
+

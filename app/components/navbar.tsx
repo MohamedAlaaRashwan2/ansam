@@ -35,7 +35,7 @@ useEffect(() => {
     <nav className={`${styles.navbar} `}>
         <div className={`${styles.container} container`}>
           <div className={styles.logoContainer}>
-            <Image className={styles.logo} src="/ansam_logo_FAINL.png" alt="ansa hotel" width={100} height={100} />
+            <Image className={styles.logo} src="/ansam_logo_FAINL.png" alt="ansa hotel" width={100} height={100} onClick={ () => window.location.href = "/"} />
           </div>
             <ul className={styles.navLinks}>
                 <li><Link href="/">الرئيسية</Link></li>
@@ -43,7 +43,7 @@ useEffect(() => {
                 <li><Link href="/rooms">الغرف</Link></li>
                 <li><Link href="#contact">التواصل</Link></li>
             </ul>
-            <Link className={styles.bookingButton} href="/booking"><button>احجز الآن</button></Link>
+            <Link className={styles.bookingButton} href="/rooms"><button>احجز الآن</button></Link>
             <input ref={checkboxRef} type="checkbox" id="burger" className={styles.burgerCheckbox} />
            <label className={styles.burger} htmlFor="burger">
                <span></span>
@@ -58,7 +58,7 @@ useEffect(() => {
                 <li><Link href="/rooms">الغرف</Link></li>
                 <li><Link href="#contact">التواصل</Link></li>
                 </ul>
-                <Link className={styles.bookingButtonMobile} href="/booking"><button>احجز الآن</button></Link>
+                <Link className={styles.bookingButtonMobile} href="/rooms"><button>احجز الآن</button></Link>
             </div>
         </div>
     </nav>

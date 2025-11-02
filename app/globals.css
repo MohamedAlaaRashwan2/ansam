@@ -4,9 +4,10 @@
   --background: #ffffff;
   --foreground: #171717;
   --ditele: #f0b100;
-  --main-color: #c59d5f;
+  --main-color: #e9a237;
   --black:#1A1A1A;
   --text:#555555;
+  --main-background:#faf9f7;
   font-family: var(--font-cairo), sans-serif;
   --main-transition: all 0.2s ease-in-out;
 
@@ -49,8 +50,8 @@ html {
 }
 
 .container {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-left: auto;
     margin-right: auto;
 }

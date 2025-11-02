@@ -22,7 +22,6 @@
   }
 }
 
-
 .form {
   display: flex;
   flex-direction: column;
@@ -53,6 +52,21 @@
   color: #777;
   width: 146px;
 }
+
+
+@media (max-width: 1286px) {
+.input,
+.select {
+  width: 121px;
+}
+}
+@media (max-width: 1180px) {
+.input,
+.select {
+  width: 113px;
+}
+}
+
 
 .formGroup input:focus{
 outline: none;

@@ -4,6 +4,32 @@
   direction: rtl;
 }
 
+.containerr {
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .containerr {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .containerr{
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .containerr {
+        width: 1170px;
+    }
+}
+
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -15,7 +41,19 @@
   .container {
     flex-direction:column-reverse;
     gap: 16px;
+    align-items: center;
   }
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  color: var(--ditele);
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .header {
@@ -31,6 +69,14 @@
   padding: 100px 0;
   position: relative;
 }
+
+@media (max-width: 768px) {
+  .header {
+    padding: 50px 0;
+    margin-bottom: 25px; 
+  }
+}
+
 .header::after {
   content: "";
   position: absolute;
@@ -80,6 +126,12 @@
   flex: 0 0 50%;
 }
 
+@media (max-width: 768px) {
+  .imageWrapper {
+    flex: 0 0 30%;
+  }
+}
+
 .image {
   width: 100%;
   height: 220px;
@@ -90,12 +142,26 @@
 .price {
   position: absolute;
   bottom: 12px;
-  right: 12px;
+  left: 191px;
   background-color: var(--ditele);
   color: #fff;
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 14px;
+}
+
+@media (min-width: 1287px) {
+  .price {
+    bottom: 12px;
+    left: 245px;
+  }
+}
+
+@media (max-width: 768px) {
+  .price {
+        bottom: 148px;
+        left: -120px;
+  }
 }
 .starRating {
   position: absolute;
@@ -118,6 +184,8 @@
   flex: 0 0 50%;
   position: relative;
 }
+
+
 .content a {
   position: absolute;
   bottom: 10px;
@@ -130,7 +198,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .headerRow {
+  margin-bottom: 45px;
+
+  }
 }
 
 .roomName {
@@ -176,8 +251,8 @@
     color: #afb4bf;
     margin-bottom: 10px;
     font-size: 12px;
-}
-.services h6 span {
+  }
+  .services h6 span {
   font-size: 16px;
   display: block;
   color: #333;
@@ -232,3 +307,24 @@ margin-right: 5px;
 }
 
 
+  @media (max-width: 768px) {
+    .content {
+      flex: 0 0 71%;
+      padding: 7px;
+    }
+    .headerRow h4{
+         font-size: 18px;
+    }
+    .services {
+gap: 0;    }
+    .content a {
+      font-size: 12px;
+    }
+    .services h6 {
+      font-size: 16px;
+    }
+    .services h6 span {
+      font-size: 13px;
+    }
+
+  }

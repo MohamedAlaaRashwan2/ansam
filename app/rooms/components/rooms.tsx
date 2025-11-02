@@ -23,61 +23,81 @@ export default function RoomsSection() {
   const [rooms, setRooms] = useState<Room[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
-  // ----- Pagination state -----
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const roomsPerPage = 6; // عدّل رقم الغرف لكل صفحة هنا
+  const roomsPerPage = 6;
+  
+
+
+  const [filter, setFilter] = useState({
+    check_in: "",
+    check_out: "",
+    min_price: "",
+    max_price: "",
+  });
+
+  interface ApiRes {
+    data: Room[];
+  }
+  const fetchRooms = async (filter?: any) => {
+    try {
+      const res = await fetch(
+        "https://paleturquoise-beaver-156875.hostingersite.com/api_php/available_rooms.php",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(filter),
+        }
+      );
+      if (!res.ok) throw new Error("فشل في تحميل البيانات");
+      const data: ApiRes = await res.json();
+      setRooms(Array.isArray(data.data) ? data.data : Array.isArray(data) ? data : []);
+    } catch (err: unknown) {
+      if (err instanceof Error) setError(err.message);
+      else setError("حدث خطأ غير متوقع");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    async function fetchRooms() {
-      try {
-        const res = await fetch("https://paleturquoise-beaver-156875.hostingersite.com/api_php/rooms.php");
-        {
-          next :{ 
-            revalidate:60
-          }
-        }
-        if (!res.ok) throw new Error("فشل في تحميل البيانات");
-        const data: Room[] = await res.json();
-        setRooms(data);
-      } catch (err: unknown) {
-        if (err instanceof Error) setError(err.message);
-        else setError("حدث خطأ غير متوقع");
-      } finally {
-        setLoading(false);
-      }
-    }
-
     fetchRooms();
   }, []);
 
-  // حساب عدد الصفحات
+  useEffect(() => {
+    if (
+      filter.check_in &&
+      filter.check_out &&
+      filter.min_price &&
+      filter.max_price
+    ) {
+      fetchRooms(filter);
+    }
+  }, [filter]);
+
+
   const totalPages = Math.max(1, Math.ceil(rooms.length / roomsPerPage));
 
-  // لو طول الـ rooms اتغير (مثلاً بعد تحميل البيانات) لازم نتأكد إن currentPage ضمن النطاق
   useEffect(() => {
     if (currentPage > totalPages) setCurrentPage(totalPages);
     if (currentPage < 1) setCurrentPage(1);
   }, [currentPage, totalPages]);
 
-  // slice الغرف الحالية مع useMemo لتحسين الأداء
   const currentRooms = useMemo(() => {
     const start = (currentPage - 1) * roomsPerPage;
     return rooms.slice(start, start + roomsPerPage);
   }, [rooms, currentPage, roomsPerPage]);
 
-  // دوال التنقل
   const goPrev = () => setCurrentPage((p) => Math.max(p - 1, 1));
   const goNext = () => setCurrentPage((p) => Math.min(p + 1, totalPages));
   const goTo = (page: number) => setCurrentPage(() => Math.min(Math.max(1, page), totalPages));
-  const goFirst = () => setCurrentPage(1);
-  const goLast = () => setCurrentPage(totalPages);
 
   if (loading) {
     return (
       <section className={styles.rooms}>
         <div className={styles.container}>
-          <p className={styles.loading}>جاري تحميل الغرف...</p>
+          <div className={styles.loadingContainer}>
+            <p className={styles.loading}>جاري تحميل الغرف...</p>
+          </div>
         </div>
       </section>
     );
@@ -87,27 +107,24 @@ export default function RoomsSection() {
     return (
       <section className={styles.rooms}>
         <div className={styles.container}>
-          <p className={styles.error}>حدث خطأ أثناء تحميل البيانات: {error}</p>
+          <div className={styles.loadingContainer}>
+            <p className={styles.error}>حدث خطأ أثناء تحميل البيانات: {error}</p>
+          </div>
         </div>
       </section>
     );
   }
 
   const getVisiblePages = () => {
-    const delta = 2; 
+    const delta = 2;
     const left = Math.max(1, currentPage - delta);
     const right = Math.min(totalPages, currentPage + delta);
     const pages: number[] = [];
     for (let p = left; p <= right; p++) pages.push(p);
-    if (left > 2) {
-      return [1, -1, ...pages];
-    } else if (left === 2) {
-      return [1, ...pages];
-    } else if (right < totalPages - 1) {
-      return [...pages, -1, totalPages];
-    } else if (right === totalPages - 1) {
-      return [...pages, totalPages];
-    }
+    if (left > 2) return [1, -1, ...pages];
+    else if (left === 2) return [1, ...pages];
+    else if (right < totalPages - 1) return [...pages, -1, totalPages];
+    else if (right === totalPages - 1) return [...pages, totalPages];
     return pages;
   };
 
@@ -126,7 +143,7 @@ export default function RoomsSection() {
         <p className={styles.subtitle}>تجربة راقية</p>
       </motion.div>
 
-      <div className="container">
+      <div className={styles.containerr}>
         <div className={styles.container}>
           <div className={styles.cards}>
             {currentRooms.map((room, index) => (
@@ -140,10 +157,10 @@ export default function RoomsSection() {
               >
                 <div className={styles.imageWrapper}>
                   <Link href={`/rooms/${room.id}`}>
-                    <img 
-                      src={room.images?.[0] || "/about1.jpg"} 
-                      alt={room.name} 
-                      className={styles.image} 
+                    <img
+                      src={room.images?.[0] || "/about1.jpg"}
+                      alt={room.name}
+                      className={styles.image}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = "/about1.jpg";
@@ -162,17 +179,17 @@ export default function RoomsSection() {
                   </div>
 
                   <div className={styles.services}>
-                      <h6> المساحه: <span>{room.size}م</span></h6>
-                      <h6> سعة الغرف: <span>أقصى عدد للأشخاص {room.capacity}</span></h6>
-                      <h6> سرير: <span>{room.bad}</span></h6>
-                      <h6> الخدمات: <span>واي فاي,تليفيزون...</span></h6>
+                    <h6>المساحه: <span>{room.size || 40}م</span></h6>
+                    <h6>سعة الغرف: <span>أقصى عدد للأشخاص {room.capacity || 2}</span></h6>
+                    <h6>سرير: <span>{room.bad || "سرير ملكي"}</span></h6>
+                    <h6>الخدمات: <span>واي فاي,تليفيزون...</span></h6>
                   </div>
                   <Link href={`/rooms/${room.id}`}>المزيد من التفصيل <i className="fa-solid fa-left-long"></i></Link>
                 </div>
               </motion.div>
             ))}
           </div>
-          <Booking />
+          <Booking setFilter={setFilter} />
         </div>
 
         <motion.div
@@ -183,7 +200,6 @@ export default function RoomsSection() {
           viewport={{ once: true }}
         >
           <ul className={styles.pagination} aria-label="Pagination">
-
             <li className={styles.pageItem}>
               <button
                 className={styles.pageLink}
@@ -191,7 +207,7 @@ export default function RoomsSection() {
                 disabled={currentPage === 1}
                 aria-label="الصفحة السابقة"
               >
-              «  السابق
+                « السابق
               </button>
             </li>
 
@@ -205,7 +221,7 @@ export default function RoomsSection() {
               ) : (
                 <li key={p} className={styles.pageItem}>
                   <button
-                    className={styles.pageLink + (p === currentPage ? " " + styles.active : "")}
+                    className={`${styles.pageLink} ${p === currentPage ? styles.active : ""}`}
                     onClick={() => goTo(p)}
                     aria-current={p === currentPage ? "page" : undefined}
                   >
@@ -222,11 +238,10 @@ export default function RoomsSection() {
                 disabled={currentPage === totalPages}
                 aria-label="الصفحة التالية"
               >
-                التالي  »
+                التالي »
               </button>
             </li>
           </ul>
-
         </motion.div>
       </div>
     </section>
