@@ -70,13 +70,12 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-<div className={styles.copy}>
-  <span>© 2025 أنسام مكة | جميع الحقوق محفوظة</span>
-  <p className={styles.developer}>
-    تطوير بواسطة <a href="https://rashwan.site" target="_blank">محمد رشوان</a>
-  </p>
-</div>
+      <div className={styles.copy}>
+        <span>© 2025 أنسام مكة | جميع الحقوق محفوظة</span>
+        <p className={styles.developer}>
+          تطوير بواسطة <a href="https://rashwan.site" target="_blank">محمد رشوان</a>
+        </p>
+      </div>
     </footer>
   );
 }

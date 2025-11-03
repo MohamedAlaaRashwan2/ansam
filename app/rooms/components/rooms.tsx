@@ -192,13 +192,7 @@ export default function RoomsSection() {
           <Booking setFilter={setFilter} />
         </div>
 
-        <motion.div
-          className={styles.moreBtn}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
+        <div className={styles.moreBtn}>
           <ul className={styles.pagination} aria-label="Pagination">
             <li className={styles.pageItem}>
               <button
@@ -242,7 +236,7 @@ export default function RoomsSection() {
               </button>
             </li>
           </ul>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

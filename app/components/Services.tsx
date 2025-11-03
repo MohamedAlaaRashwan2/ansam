@@ -12,7 +12,7 @@ import {
   faHeadset,
   faGift,
 } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import styles from "./Services.module.css";
 
 export default function Services() {
@@ -32,61 +32,48 @@ export default function Services() {
       description: "خدمة نقل مريحة وآمنة من المطار إلى الفندق والعكس.",
       delay: 0.2,
     },
-    // {
-    //   id: 3,
-    //   icon: faUtensils,
-    //   title: "تنظيم برامج الحج والعمرة",
-    //   description: "حملات متكاملة تشمل النقل، السكن، والإعاشة بإشراف كوادر مؤهلة.",
-    //   delay: 0.3,
-    // },
+
     {
       id: 4,
       icon: faBed,
       title: "غرف مريحة ومكيفة",
       description: "استمتع بإقامة مريحة في غرف مجهزة بالكامل ومكيفة.",
-      delay: 0.4,
+      delay: 0.3,
     },
     {
       id: 5,
       icon: faWifi,
       title: "إنترنت مجاني",
       description: "شبكة إنترنت مجانية وسريعة في جميع أنحاء الفندق.",
-      delay: 0.5,
+      delay: 0.4,
     },
-    // {
-    //   id: 6,
-    //   icon: faHotel,
-    //   title: "اقامة فندقية مميزة",
-    //   description: "مجموعة واسعة من الفنادق والشقق بالقرب من الحرم المكي بمستويات مختلفة تناسب جميع الفئات.",
-    //   delay: 0.1,
-    // },
     {
       id: 7,
       icon: faKaaba,
       title: "تنظيم برامج الحج والعمرة",
       description: "حملات متكاملة تشمل النقل، السكن، والإعاشة بإشراف كوادر مؤهلة.",
-      delay: 0.2,
+      delay: 0.5,
     },
     {
       id: 8,
       icon: faGlobe,
       title: "خدمة الحجز الإلكتروني المسبق",
       description: "نظام حجز أونلاين آمن وسهل مع تأكيد فوري للحجوزات.",
-      delay: 0.3,
+      delay: 0.6,
     },
     {
       id: 9,
       icon: faHeadset,
       title: "خدمة عملاء",
       description: "فريق متخصص لخدمة النزلاء والاستجابة لجميع الاستفسارات في أي وقت.",
-      delay: 0.4,
+      delay: 0.7,
     },
     {
       id: 10,
       icon: faGift,
       title: "عروض موسمية ومرونة في الإلغاء",
       description: "خصومات خاصة للمواسم وإمكانية إلغاء أو تعديل الحجز وفق سياسات مرنة.",
-      delay: 0.5,
+      delay: 0.8,
     },
 
   ];
@@ -128,10 +115,10 @@ export default function Services() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.6,
+                duration: 0.4,
                 delay: service.delay,
               }}
-              viewport={{ once: true }}
+              viewport={{ once: true  }}
             >
               <FontAwesomeIcon icon={service.icon} className={styles.icon} />
               <h5>{service.title}</h5>

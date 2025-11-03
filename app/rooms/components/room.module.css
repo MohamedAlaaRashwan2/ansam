@@ -142,7 +142,7 @@
 .price {
   position: absolute;
   bottom: 12px;
-  left: 191px;
+  left: 216px;
   background-color: var(--ditele);
   color: #fff;
   padding: 6px 12px;
@@ -192,6 +192,23 @@
   color: var(--ditele);
   font-size: 15px;
   font-weight: bold;
+}
+
+@media (min-width: 769px) {
+  .content a:hover i {
+    animation: moveArrow 0.6s ease-in-out infinite ;
+  }  
+  @keyframes moveArrow {
+    0%{
+      transform: translateX(0px);
+    }
+    50%{
+      transform: translateX(-10px);
+    }
+    100%{
+      transform: translateX(0px);
+    }
+  }
 }
 
 .headerRow {

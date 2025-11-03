@@ -2,7 +2,7 @@
 
 @media (max-width: 768px) {
     p.text {
-        margin-top: 50px;
+        margin-top: 40px;
         
     }
     h1.h1text {
@@ -32,3 +32,44 @@
 .bookingButton:hover {
     background-color: var(--ditele);
 }
+
+.burger , .burgerL {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background-color: rgba(255, 255, 255, 0.7); 
+  padding: 0.5rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .burger , .burgerL {
+        padding: 0.2rem;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .burger:hover , .burgerL:hover {
+      background-color: rgb(255, 255, 255); 
+    }
+}
+
+.burger:active , .burgerL:active{
+  background-color: rgb(119, 113, 113); 
+}
+
+
+
+.burgerL {
+    left: 10px;
+}
+
+.burger {
+    right: 10px;
+}
+
+

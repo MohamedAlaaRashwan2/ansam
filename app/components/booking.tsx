@@ -60,7 +60,7 @@ export default function BookingForm() {
     <div className={styles.bookingWrapper}>
       <form className={styles.bookingForm} onSubmit={handleSubmit}>
         <div className={styles.formItem}>
-          <label htmlFor="checkIn">تاريخ الوصول</label>
+          <label>تاريخ الوصول</label>
           <input
             type="date"
             id="checkIn"
@@ -75,7 +75,7 @@ export default function BookingForm() {
         <span className={styles.divider}></span>
 
         <div className={styles.formItem}>
-          <label htmlFor="checkOut">تاريخ المغادرة</label>
+          <label>تاريخ المغادرة</label>
           <input
             type="date"
             id="checkOut"

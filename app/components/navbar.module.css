@@ -1,11 +1,10 @@
 .navbar {
-    background-color: var(--foreground);
     position: sticky;
     top: 0;
     z-index: 999;
     box-shadow: 0 0 10px #6161619e;
     transition: var(--main-transition);
-      background-color: #faf9f7;
+    background-color: #faf9f7;
 
 }
 
@@ -137,7 +136,7 @@ div.container {
 .navLinksMobile {
   display: flex;
   flex-direction: column;
-  background: var(--foreground);
+  background: var(--main-background);
   position: fixed;
   top: 0;
   right: -340px;

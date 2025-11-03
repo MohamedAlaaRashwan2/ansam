@@ -49,6 +49,8 @@
   background: transparent;
   outline: none;
   cursor: pointer;
+  display: block;
+  height: 100%;
 }
 
 .divider {
@@ -75,8 +77,13 @@
   transition: 0.3s ease;
 }
 
-.btn:hover {
+.btn:active {
   background-color: var(--main-color);
+}
+@media (min-width: 768px) {
+  .btn:hover {
+    background-color: var(--main-color);
+  }
 }
 
 .popup {
@@ -168,7 +175,7 @@
 @media (max-width: 768px) {
   .bookingWrapper{
     width: 95%;
-    top: -330px;
+    top: -305px;
     right: 2.5%;  
   }
   .bookingForm {

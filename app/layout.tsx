@@ -22,14 +22,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { Cairo } from "next/font/google";
-
-const cairo = Cairo({
-  subsets: ["latin", "arabic"],
-  weight: ["400", "600", "700"],
-  variable: "--font-cairo",
-});
-
+  
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,7 +37,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cairo.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
       >
         <Navbar />
         {children}

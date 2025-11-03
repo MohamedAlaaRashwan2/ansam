@@ -8,8 +8,8 @@
   --black:#1A1A1A;
   --text:#555555;
   --main-background:#faf9f7;
-  font-family: var(--font-cairo), sans-serif;
   --main-transition: all 0.2s ease-in-out;
+  --font-cairo: 'Cairo'
 
 }
 
@@ -47,6 +47,7 @@ ul {
 
 html {
     scroll-behavior: smooth;
+    will-change: transform;
 }
 
 .container {

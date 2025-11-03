@@ -40,19 +40,16 @@
   flex: 0 0 220px;
   padding: 30px 20px;
   transition: all 0.3s ease;
-  animation: fadeUp 0.8s ease forwards;
-  opacity: 0;
 }
 
 .singleService:hover {
   background-color: #fff;
-  transform: translateY(-8px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .icon {
   font-size: 38px;
-  color: #b6862e; /* لون ذهبي فاخر */
+  color: #b6862e; 
   margin-bottom: 15px;
 }
 
@@ -69,17 +66,6 @@
   line-height: 1.8;
 }
 
-/* Animation */
-@keyframes fadeUp {
-  from {
-    transform: translateY(25px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
 /* Responsive */
 @media (min-width: 980px) and (max-width: 1009px) {

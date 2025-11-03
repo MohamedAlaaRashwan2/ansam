@@ -111,14 +111,14 @@ export default function HeroBackgroundSlider() {
       {/* الأسهم */}
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-5 -translate-y-1/2 z-20 bg-white/70 hover:bg-white p-2 rounded-full"
+        className={styles.burgerL}
       >
         <ChevronLeft size={30} className="text-black" />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-5 -translate-y-1/2 z-20 bg-white/70 hover:bg-white p-2 rounded-full"
+        className={styles.burger}
       >
         <ChevronRight size={30} className="text-black" />
       </button>
