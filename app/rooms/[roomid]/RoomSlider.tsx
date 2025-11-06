@@ -35,6 +35,23 @@ export default function HeroBackgroundSlider({ slides }: { slides: Slide[] }) {
     return () => clearInterval(interval);
   }, [isPaused, current, normalizedSlides.length]);
 
+  setTimeout(() => {
+  const element = document.getElementById('comment');
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+  }
+}, 0);
+
+ function disableScroll() {
+  document.body.style.overflow = "hidden";
+}
+
+ function enableScroll() {
+  document.body.style.overflow = '';
+}
   return (
     <div
       className={`${styles.slideContainer}`}
@@ -50,7 +67,7 @@ export default function HeroBackgroundSlider({ slides }: { slides: Slide[] }) {
           const visible = index === current;
           return (
             <motion.div
-              onClick={() => setSelectedImage(imgUrl)}
+              onClick={() => {setSelectedImage(imgUrl); disableScroll();}}
               key={index}
               className={`${styles.mainSlide} `}
               style={{
@@ -64,8 +81,8 @@ export default function HeroBackgroundSlider({ slides }: { slides: Slide[] }) {
         })}
       </div>
       {selectedImage && (
-         <div className={styles.modal} onClick={() => setSelectedImage(null)}>
-         <img src={selectedImage} alt="Room full view" className={styles.modalImage} />
+         <div className={styles.modal} onClick={() => {setSelectedImage(null); enableScroll();}}>
+         <img id="comment" src={selectedImage} alt="Room full view" className={styles.modalImage} />
          </div>
       )}
       <div className={styles.thumbnails}>
