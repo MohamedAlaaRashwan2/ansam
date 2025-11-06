@@ -84,6 +84,7 @@ export default function RoomsSection() {
               className={styles.card}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{y: -20 , transition: {duration: 0.3}}}
               transition={{ duration: 0.7, delay: index * 0.2 }}
               viewport={{ once: true }}
             >

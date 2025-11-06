@@ -114,8 +114,9 @@ export default function Services() {
               className={styles.singleService}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{backgroundColor: "#fff", boxShadow: "0 10px 25px rgba(0, 0, 0, 0.08)", transition: {duration: 0.3, type: "spring", stiffness: 100},}}
               transition={{
-                duration: 0.4,
+                duration: 0.6,
                 delay: service.delay,
               }}
               viewport={{ once: true  }}

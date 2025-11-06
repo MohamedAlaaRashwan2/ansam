@@ -53,7 +53,7 @@ export default function BookingForm() {
       return;
     }
     localStorage.setItem("formData", JSON.stringify(formData));
-    // router.push("/confirmation");
+    window.location.href = "/confirmation";
   };
 
   return (

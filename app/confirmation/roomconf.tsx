@@ -35,7 +35,7 @@ export default function RoomsSection() {
           throw new Error("Failed to load data");
         }
         const data: Room[] = await res.json();
-        setRooms(data);
+        setRooms(Array.isArray(data) ? data : [data]);
       } catch (err: unknown) {
         if (err instanceof Error) {
           setError(err.message);

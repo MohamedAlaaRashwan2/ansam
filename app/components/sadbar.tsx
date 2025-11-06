@@ -86,7 +86,7 @@ export default function HeroBackgroundSlider() {
       </div>
 
       {/* النص */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-white z-10 text-center p-4">
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-white z-10 text-center p-4 mb-20 md:mb-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}

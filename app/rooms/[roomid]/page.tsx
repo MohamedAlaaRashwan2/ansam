@@ -36,6 +36,7 @@ export default async function RoomPage(props: {
     }
   );
 
+
   if (!res.ok) {
     return (
       <div>

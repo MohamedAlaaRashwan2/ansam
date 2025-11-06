@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./room.module.css";
-import { FaWifi, FaUtensils, FaMosque, FaSnowflake, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import Booking from "./formroom";
 import Link from "next/link";
 

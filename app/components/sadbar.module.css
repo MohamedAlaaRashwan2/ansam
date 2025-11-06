@@ -1,12 +1,8 @@
 
 
 @media (max-width: 768px) {
-    p.text {
-        margin-top: 40px;
-        
-    }
     h1.h1text {
-        font-size: 40px;
+        font-size: 32px;
         line-height: 1.6; 
     }
     

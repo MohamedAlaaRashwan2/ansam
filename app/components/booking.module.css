@@ -34,6 +34,13 @@
   min-width: 180px;
 }
 
+@media (max-width: 768px) {
+  .formItem {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
 .formItem label {
   font-size: 14px;
   font-weight: 500;
@@ -88,7 +95,7 @@
 
 .popup {
   position: absolute;
-  top: 85px;
+  top: 78px;
   left: 0;
   background: white;
   border-radius: 12px;
@@ -98,6 +105,11 @@
   width: 220px;
   animation: fadeIn 0.3s ease;
   color: var(--text);
+}
+@media (max-width: 768px) {
+  .popup {
+    top: 40px;
+  }
 }
 
 .popup h4 {
@@ -181,7 +193,7 @@
   .bookingForm {
     flex-direction: column;
     align-items: stretch;
-    gap: 3px;
+    gap: 20px;
   }
 
   .divider {
