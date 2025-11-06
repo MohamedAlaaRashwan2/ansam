@@ -142,8 +142,20 @@
     z-index: 1000;
 }
 
+@media (max-width: 768px) {
+    .modalItem {
+        top: -400px;
+    }
+}
+
 .reviewModal {
 width: 50%;
+}
+
+@media (max-width: 768px) {
+    .reviewModal {
+        width: 90%;
+    }
 }
 
 .closeButton {

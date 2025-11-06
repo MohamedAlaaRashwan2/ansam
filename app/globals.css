@@ -48,8 +48,8 @@ ul {
 html {
     scroll-behavior: smooth;
     will-change: transform;
-}
 
+}
 .container {
     padding-left: 20px;
     padding-right: 20px;

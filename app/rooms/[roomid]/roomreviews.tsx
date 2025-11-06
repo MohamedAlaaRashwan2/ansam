@@ -60,6 +60,23 @@ export default function RoomReviews({ roomId }: { roomId: number }) {
       fetchReviews(); 
     }
   };
+setTimeout(() => {
+  const element = document.getElementById('comment');
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+  }
+}, 0);
+  
+ function disableScroll() {
+  document.body.style.overflow = "hidden";
+}
+
+ function enableScroll() {
+  document.body.style.overflow = '';
+}
 
   return (
     <div className={styles.reviewsContainer}>
@@ -77,7 +94,12 @@ export default function RoomReviews({ roomId }: { roomId: number }) {
                   {r.rating}
                 </span>
               </div>
-              <p>{r.comment} </p><span className={styles.readMore} onClick={() => setSelected(index)}>اقرا المزيد</span>
+              <p>{r.comment} </p><span className={styles.readMore} onClick={() => {
+              setSelected(index)
+              setTimeout(() => {
+                disableScroll()
+              }, 0);
+              }}>اقرا المزيد</span>
               <small className={styles.date}>
                 {new Date(r.created_at).toLocaleDateString("ar-EG")}
               </small>
@@ -143,7 +165,10 @@ export default function RoomReviews({ roomId }: { roomId: number }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelected(null)}
+              onClick={() => {
+                setSelected(null)
+                enableScroll()
+              }}
             />
 
             <motion.div
@@ -152,7 +177,7 @@ export default function RoomReviews({ roomId }: { roomId: number }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
             >
-             <div  key={reviews[selected].id} className={styles.reviewModal} >
+             <div  key={reviews[selected].id} id="comment" className={styles.reviewModal} >
               <div className={styles.reviewHeader}>
                 <strong>{reviews[selected].name}</strong>
                 <span className={styles.rating}>
@@ -166,7 +191,10 @@ export default function RoomReviews({ roomId }: { roomId: number }) {
               </small>
               <button
                 className={styles.closeButton}
-                onClick={() => setSelected(null)}
+                onClick={() => {
+                  setSelected(null)
+                  enableScroll()
+                }}
               >
                 إغلاق
               </button>
