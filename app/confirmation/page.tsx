@@ -92,25 +92,25 @@ export default function ConfirmationPage() {
   localStorage.setItem("finalBooking", JSON.stringify(finalBooking));
 
 
-  // try {
-  //   const res = await fetch("https://paleturquoise-beaver-156875.hostingersite.com/api_php/book_room.php", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(finalBooking),
-  //   });
+  try {
+    const res = await fetch("https://paleturquoise-beaver-156875.hostingersite.com/api_php/book_room.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(finalBooking),
+    });
 
-  //   const data = await res.json();
+    const data = await res.json();
 
-  //   if (data.status === "success") {
-  //     alert("✅ تم تأكيد الحجز بنجاح!");
-  //     localStorage.removeItem("formData");
-  //   } else {
-  //     alert("❌ " + data.message);
-  //   }
-  // } catch (error) {
-  //   alert("حدث خطأ أثناء حفظ الحجز!");
-  // }
-  localStorage.removeItem("formData");
+    if (data.status === "success") {
+      alert("✅ تم تأكيد الحجز بنجاح!");
+      localStorage.removeItem("formData");
+    } else {
+      alert("❌ " + data.message);
+    }
+  } catch (error) {
+    alert("حدث خطأ أثناء حفظ الحجز!");
+  }
+  localStorage.clear();
  }
 
 
