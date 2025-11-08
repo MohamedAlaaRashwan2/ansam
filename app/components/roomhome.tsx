@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./roomhome.module.css";
+import Link from "next/link";
 import { FaWifi, FaUtensils, FaMosque, FaSnowflake, FaStar } from "react-icons/fa";
 
 // ✅ تعريف نوع بيانات الغرفة
@@ -140,9 +141,9 @@ export default function RoomsSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <a href="/rooms" className={styles.btn}>
+          <Link href="/rooms" className={styles.btn}>
             عرض جميع الغرف
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

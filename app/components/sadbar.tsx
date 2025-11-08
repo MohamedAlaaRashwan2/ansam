@@ -46,13 +46,12 @@ export default function HeroBackgroundSlider() {
     setIsPaused(false);
   };
 
-  // ✅ حركة تلقائية كل 5 ثواني
   useEffect(() => {
     if (isPaused) return;
 
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000); // كل 5 ثواني
+    }, 5000); 
 
     return () => clearInterval(interval);
   }, [isPaused, current]);

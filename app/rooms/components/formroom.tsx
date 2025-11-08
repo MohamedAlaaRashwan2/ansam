@@ -16,6 +16,8 @@ export default function BookingForm( {setFilter}: {setFilter: (filter: any) => v
   const checkIn = useRef<HTMLInputElement>(null);
   const checkOut = useRef<HTMLInputElement>(null);
     const [form, setForm] = useState({
+    adults: adults,
+    children: children,
     check_in: checkInDate,
     check_out: checkOutDate,
     min_price: minPrice,
@@ -52,7 +54,7 @@ export default function BookingForm( {setFilter}: {setFilter: (filter: any) => v
     }
     localStorage.setItem("form", JSON.stringify(form));
     setFilter(form);
-    };
+  };
 
   // لو المستخدم حرّك أقل من الحد الأعلى، نمنع التداخل
   const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {

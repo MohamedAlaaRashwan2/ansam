@@ -156,7 +156,7 @@ export default function RoomsSection() {
                 viewport={{ once: true }}
               >
                 <div className={styles.imageWrapper}>
-                  <Link href={`/rooms/${room.id}`}>
+                  <Link href={`/rooms/${room.id}`} onClick={() => localStorage.setItem("room", JSON.stringify(room))}>
                     <img
                       src={room.images?.[0] || "/about1.jpg"}
                       alt={room.name}

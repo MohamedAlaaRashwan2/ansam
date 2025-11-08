@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef, RefObject } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./booking.module.css";
 
 export default function BookingForm() {
@@ -19,8 +19,7 @@ export default function BookingForm() {
     adults: guests,
     children: rooms,
     min_price: 0,
-    max_price: 3000,
-
+    max_price: 3000
   });
   
   useEffect(() => {

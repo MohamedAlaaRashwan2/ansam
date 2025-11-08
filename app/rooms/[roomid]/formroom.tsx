@@ -45,6 +45,21 @@ export default function BookingForm() {
         setChildren(JSON.parse(form).children);
       }
     }, []);
+    useEffect(() => {
+  const form = localStorage.getItem("form");
+  if (form) {
+    const saved = JSON.parse(form);
+    setFormData({
+      checkInDate: saved.check_in,
+      checkOutDate: saved.check_out,
+      adults: saved.adults,
+      children: saved.children,
+      roomid: window.location.pathname.split("/")[2],
+    });
+  }
+}, []);
+
+console.log(formData);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +67,9 @@ export default function BookingForm() {
       alert("تاريخ الوصول يجب أن يكون قبل تاريخ المغادرة");
       return;
     }
+    
     localStorage.setItem("formData", JSON.stringify(formData));
+    localStorage.removeItem("form");
     window.location.href = "/confirmation";
   };
 

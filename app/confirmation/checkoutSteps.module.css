@@ -1,0 +1,44 @@
+.checkoutSteps {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.checkoutSteps li + span{
+    flex: 1;
+height: 1px;
+background-color: #222;
+}
+
+.checkoutSteps li + span:last-child {
+display: none;
+}
+
+@media  (max-width: 575px) {
+
+    .checkoutSteps li{
+        flex-direction: column;
+        position: relative;
+    }
+
+  .checkoutSteps li strong{
+    display: none;  
+  }
+  .checkoutSteps li.active strong{
+        display: block;
+        position: absolute;
+        top: 31px;
+        left: -11px;
+  }
+
+}

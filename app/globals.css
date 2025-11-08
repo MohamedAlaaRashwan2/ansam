@@ -29,6 +29,7 @@
 
 body {
   background: var(--background);
+  /* background-color: #fff; */
   color: var(--foreground);
   font-family: var(--font-cairo), sans-serif;
 
@@ -47,7 +48,6 @@ ul {
 
 html {
     scroll-behavior: smooth;
-    will-change: transform;
 
 }
 .container {
