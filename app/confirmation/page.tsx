@@ -51,9 +51,16 @@ export default function ConfirmationPage() {
     if (saved) setBookingData(JSON.parse(saved));
   }, []);
 
-  const roomData = localStorage.getItem("room");
-  const roomm = roomData ? JSON.parse(roomData) : null; 
+  if(typeof window !== "undefined") {
+  }
+  const [value, setValue] = useState<string | null>(null);
+  
+  useEffect(() => {
+    const roomData = localStorage.getItem("room");
+    setValue(roomData);
+  }, []);
 
+  const roomm = value ? JSON.parse(value) : null; 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
