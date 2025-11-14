@@ -100,7 +100,7 @@ export default function HeroBackgroundSlider() {
             <p className={`${styles.text} text-lg mb-6 max-w-2xl mx-auto`}>
               {slides[current].text}
             </p>
-            <button className={`${styles.bookingButton}`}>
+            <button onClick={() => window.location.href = "/rooms"} className={`${styles.bookingButton}`}>
               احجز الآن
             </button>
           </motion.div>
