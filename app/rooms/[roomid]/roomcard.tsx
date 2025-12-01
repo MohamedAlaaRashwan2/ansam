@@ -3,6 +3,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "../../components/roomhome.module.css";
 import { FaWifi, FaUtensils, FaMosque, FaSnowflake, FaStar } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/free-mode";
+import {Pagination, Autoplay, FreeMode } from "swiper/modules";
 
 // ✅ تعريف نوع بيانات الغرفة
 interface Room {
@@ -26,7 +32,6 @@ export default function RoomsSection() {
         const res = await fetch("https://paleturquoise-beaver-156875.hostingersite.com/api_php/rooms.php"); // ← غيّر الرابط حسب API بتاعك
         if (!res.ok) throw new Error("فشل في تحميل البيانات");
         const data: Room[] = await res.json();
-        // data.length = 4;
         setRooms(data);
       } catch (err: unknown) {
         if (err instanceof Error) setError(err.message);
@@ -40,7 +45,7 @@ export default function RoomsSection() {
   }, []);
   
   const shuffledRooms = [...rooms].sort(() => Math.random() - 0.5);
-  shuffledRooms.length = 4;
+  shuffledRooms.length = 10;
 
   if (loading) {
     return (
@@ -82,14 +87,35 @@ export default function RoomsSection() {
         >
           <h2 className={styles.title + " " + styles.titleroomid}  >غرف مشابهة</h2>
         </motion.div>
-
-        <div className={styles.cards} style={{
-                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))'
-              }}>
+        <Swiper 
+        modules={[Pagination, Autoplay, FreeMode]}
+        spaceBetween={30}
+        slidesPerView={3}
+        breakpoints={{
+          0: {        // من أول شاشة الموبايل
+           slidesPerView: 1,
+          },
+             640: {      // تابلت صغير
+          slidesPerView: 2,
+          },
+           1024: {     // لاب أو شاشة كبيرة
+           slidesPerView: 3,
+          },
+          1280: {     // شاشات أكبر
+           slidesPerView: 4,
+          },
+        }}
+        loop={true}
+        speed={500}
+        grabCursor={true}
+        freeMode={true}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000 }}
+        >
           {shuffledRooms.map((room, index) => (
+            <SwiperSlide key={room.id} >
             <motion.a
               href={`/rooms/${room.id}`}
-              key={room.id}
               className={styles.card}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -138,8 +164,9 @@ export default function RoomsSection() {
                 </ul>
               </div>
             </motion.a>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </section>
   );

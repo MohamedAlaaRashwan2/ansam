@@ -3,11 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./navbar.module.css";
 import { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
 
 const checkboxRef = useRef<HTMLInputElement>(null);
 const menuRef = useRef<HTMLDivElement>(null);
+const pathname = usePathname();
 
 useEffect(() => {
   const handleClickOutside = (event: MouseEvent) => {
@@ -27,10 +29,6 @@ useEffect(() => {
   return () => document.removeEventListener("click", handleClickOutside);
 }, []);
 
-
-
-
-
     return (
     <nav className={`${styles.navbar} `}>
         <div className={`${styles.container} container`}>
@@ -38,9 +36,9 @@ useEffect(() => {
             <Image className={styles.logo} src="/ansam_logo_FAINL.png" alt="ansa hotel" width={100} height={100} onClick={ () => window.location.href = "/"} />
           </div>
             <ul className={styles.navLinks}>
-                <li><Link href="/">الرئيسية</Link></li>
+                <li><Link href="/" className={pathname === "/" ? "text-[#f0b100]" : ""}>الرئيسية</Link></li>
                 <li><Link href="#about">عننا</Link></li>
-                <li><Link href="/rooms">الغرف</Link></li>
+                <li><Link href="/rooms" className={pathname === "/rooms/" ? "text-[#f0b100]" : ""}>الغرف</Link></li>
                 <li><Link href="#contact">التواصل</Link></li>
             </ul>
             <Link className={styles.bookingButton} href="/rooms"><button>احجز الآن</button></Link>
@@ -53,9 +51,9 @@ useEffect(() => {
             <div ref={menuRef} className={styles.navLinksMobile}>
                 <Image className={styles.logoMobile} src="/ansam_logo_FAINL.png" alt="ansa hotel" width={100} height={100} />
                 <ul>
-                <li><Link href="/">الرئيسية</Link></li>
+                <li><Link href="/" className={pathname === "/" ? "text-[#f0b100] pr-[35px]" : ""}>الرئيسية</Link></li>
                 <li><Link href="#about">عننا</Link></li>
-                <li><Link href="/rooms">الغرف</Link></li>
+                <li><Link href="/rooms" className={pathname === "/rooms/" ? "text-[#f0b100] pr-[35px]" : ""}>الغرف</Link></li>
                 <li><Link href="#contact">التواصل</Link></li>
                 </ul>
                 <Link className={styles.bookingButtonMobile} href="/rooms"><button>احجز الآن</button></Link>

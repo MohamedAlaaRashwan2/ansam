@@ -104,7 +104,7 @@ div.container {
     padding: 20px 20px;
 }
 
-.navLinksMobile li a:hover {
+.navLinksMobile li a:active {
     background-color: #D4AF37;
     padding-right: 35px;
 }

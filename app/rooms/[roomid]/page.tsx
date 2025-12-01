@@ -3,7 +3,8 @@ import RoomSlider from "./RoomSlider";
 import { FaStar } from "react-icons/fa";
 import BookingForm from "./formroom";
 import RoomReviews from "./roomreviews";
-import RoomHome from "./roomcard";    
+import RoomHome from "./roomcard";   
+
 interface Room {
   id: number;
   name: string;
@@ -46,7 +47,6 @@ export default async function RoomPage(props: {
   }
 
   const room: Room = await res.json();
-
   
   const mapSrc = `https://www.google.com/maps?q=${room.lat || 21.422617721535033},${room.lng || 39.826315101937865}&hl=ar&z=15&output=embed`;
   const mapSrcMobile = `https://www.google.com/maps/search/?api=1&query=${room.lat || 21.422617721535033},${room.lng || 39.826315101937865}&hl=ar`;

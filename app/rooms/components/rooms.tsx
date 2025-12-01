@@ -150,9 +150,9 @@ export default function RoomsSection() {
               <motion.div
                 key={room.id}
                 className={styles.card}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: index * 0.08 }}
+                initial={{ opacity: 0, x: 70 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.08 }}
                 viewport={{ once: true }}
               >
                 <div className={styles.imageWrapper}>

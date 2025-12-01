@@ -59,8 +59,6 @@ export default function BookingForm() {
   }
 }, []);
 
-console.log(formData);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if(new Date(checkInDate) > new Date(checkOutDate)) {

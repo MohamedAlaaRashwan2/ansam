@@ -24,12 +24,15 @@ export default function RoomReviews({ roomId }: { roomId: number }) {
     comment: "",
   });
 
-  // 🟢 جلب التقييمات الخاصة بالغرفة
   const fetchReviews = async () => {
     try {
       const res = await fetch(
-        `https://paleturquoise-beaver-156875.hostingersite.com/api_php/get_reviews.php?room_id=${roomId}`
+        `https://paleturquoise-beaver-156875.hostingersite.com/api_php/getreviews.php?room_id=${roomId}`
       );
+    if (!res.ok) {
+      console.error("خطأ في الاستجابة من السيرفر:", res.status);
+      return;
+    }
       const data = await res.json();
       if (data.status === "success") setReviews(data.data);
     } catch (error) {
@@ -37,12 +40,10 @@ export default function RoomReviews({ roomId }: { roomId: number }) {
     }
   };
 
-  // 🟢 عند التحميل
   useEffect(() => {
     fetchReviews();
   }, [roomId]);
 
-  // 🟢 إرسال رأي جديد
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await fetch(
@@ -60,15 +61,16 @@ export default function RoomReviews({ roomId }: { roomId: number }) {
       fetchReviews(); 
     }
   };
-setTimeout(() => {
-  const element = document.getElementById('comment');
-  if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center'
-    });
-  }
-}, 0);
+  
+  setTimeout(() => {
+    const element = document.getElementById('comment');
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+  }, 0);
   
  function disableScroll() {
   document.body.style.overflow = "hidden";
