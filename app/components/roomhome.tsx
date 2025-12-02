@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import styles from "./roomhome.module.css";
 import Link from "next/link";
 import { FaWifi, FaUtensils, FaMosque, FaSnowflake, FaStar } from "react-icons/fa";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -12,7 +11,6 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import {Pagination, Autoplay, FreeMode } from "swiper/modules";
 
-// ✅ تعريف نوع بيانات الغرفة
 interface Room {
   id: number;
   name: string;
@@ -82,14 +80,27 @@ export default function RoomsSection() {
           <h2 className={styles.title}>غرفنا الفندقية</h2>
           <p className={styles.subtitle}>تجربة راقية</p>
         </motion.div>
-
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7}}
+              viewport={{ once: true }}
+            >
         <Swiper
         modules={[Pagination, Autoplay, FreeMode]}
         spaceBetween={30}
         slidesPerView={3}
+        loop={true}
+        speed={500}
+        grabCursor={true}
+        freeMode={true}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000 }}
         breakpoints={{
           0: {        // من أول شاشة الموبايل
            slidesPerView: 1,
+           freeMode: false,
+
           },
              640: {      // تابلت صغير
           slidesPerView: 2,
@@ -101,24 +112,13 @@ export default function RoomsSection() {
            slidesPerView: 4,
           },
         }}
-        loop={true}
-        speed={500}
-        grabCursor={true}
-        freeMode={true}
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
         >
           {shuffledRooms.map((room, index) => (
             <SwiperSlide>
-            <motion.a
+            <Link
               href={`/rooms/${room.id}`}
-              key={room.id}
               className={styles.card}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: index * 0.2 }}
-              viewport={{ once: true }}
-            >
+              key={room.id}>
               <div className={styles.imageWrapper}>
                 <img
                   src={room.images?.[0] || "/about1.jpg"}
@@ -160,11 +160,11 @@ export default function RoomsSection() {
                   )}
                 </ul>
               </div>
-            </motion.a>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
-
+          </motion.div>
         <motion.div
           className={styles.moreBtn}
           initial={{ opacity: 0, y: 30 }}

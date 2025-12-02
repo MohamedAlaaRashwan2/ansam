@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import {Pagination, Autoplay, FreeMode } from "swiper/modules";
+import Link from "next/link";
 
 // ✅ تعريف نوع بيانات الغرفة
 interface Room {
@@ -87,13 +88,27 @@ export default function RoomsSection() {
         >
           <h2 className={styles.title + " " + styles.titleroomid}  >غرف مشابهة</h2>
         </motion.div>
+
+        <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7}}
+              viewport={{ once: true }}
+        >
         <Swiper 
         modules={[Pagination, Autoplay, FreeMode]}
         spaceBetween={30}
         slidesPerView={3}
+        loop={true}
+        speed={500}
+        grabCursor={true}
+        freeMode={true}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000 }}
         breakpoints={{
           0: {        // من أول شاشة الموبايل
            slidesPerView: 1,
+           freeMode: false,
           },
              640: {      // تابلت صغير
           slidesPerView: 2,
@@ -105,22 +120,12 @@ export default function RoomsSection() {
            slidesPerView: 4,
           },
         }}
-        loop={true}
-        speed={500}
-        grabCursor={true}
-        freeMode={true}
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
         >
           {shuffledRooms.map((room, index) => (
             <SwiperSlide key={room.id} >
-            <motion.a
+            <Link
               href={`/rooms/${room.id}`}
               className={styles.card}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: index * 0.2 }}
-              viewport={{ once: true }}
             >
               <div className={styles.imageWrapper}>
                 <img
@@ -163,10 +168,11 @@ export default function RoomsSection() {
                   )}
                 </ul>
               </div>
-            </motion.a>
+            </Link>
             </SwiperSlide>
           ))}
         </Swiper>
+        </motion.div>
       </div>
     </section>
   );
