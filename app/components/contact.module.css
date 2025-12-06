@@ -65,12 +65,12 @@
 
 .formBox input:focus,
 .formBox textarea:focus {
-  border-color: #0070f3;
+  border-color: var(--ditele);
 }
 
 .formBox button {
   padding: 14px;
-  background-color: #0070f3;
+  background-color: var(--ditele);
   color: white;
   font-weight: bold;
   border: none;
@@ -79,8 +79,10 @@
   transition: background-color 0.3s;
 }
 
+
+
 .formBox button:hover {
-  background-color: #0059c1;
+  background-color: var(--main-color);
 }
 
 /* استجابة للشاشات الصغيرة */
