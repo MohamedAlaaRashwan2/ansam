@@ -1,17 +1,27 @@
+"use client";
+
 import ImageSlider from "./components/sadbar";
 import About from "./components/about";
 import Services from "./components/Services";
 import Room from "./components/roomhome";
 import Contact from "./components/contact";
+import { useRouter } from "next/navigation";
+
 function Home() {
+  const router = useRouter();
+
+  const goToLogin = () => router.push("/login");
+  const goToAdmin = () => router.push("/admin");
+
   return (
     <div className="mainPage">
       <ImageSlider />
       <About />
-      <Services/>
-      <Room/>
-      <Contact/>
+      <Services />
+      <Room />
+      <Contact />
     </div>
   );
 }
+
 export default Home;

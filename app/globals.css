@@ -6,6 +6,7 @@
 :root {
   --ditele: #f0b100;
   --main-color: #e9a237;
+  --main-color2: #909090;
   --black:#1A1A1A;
   --text:#555555;
   --main-background:#faf9f7;
@@ -81,6 +82,9 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
 body {
